@@ -1,0 +1,67 @@
+[
+  {
+    "id": "people",
+    "name": "人民网 全部新闻",
+    "url": "http://www.people.com.cn/rss/ywkx.xml"
+  },
+  {
+    "id": "chinanews",
+    "name": "中国新闻网 滚动新闻",
+    "url": "https://www.chinanews.com.cn/rss/scroll-news.xml"
+  },
+  {
+    "id": "sina_tech",
+    "name": "新浪科技",
+    "url": "https://rss.sina.com.cn/tech/index.xml"
+  },
+  {
+    "id": "xinhuanet_science",
+    "name": "新华网 科技新闻",
+    "url": "http://rss.xinhuanet.com/rss/science.xml"
+  },
+  {
+    "id": "sspai",
+    "name": "少数派",
+    "url": "https://sspai.com/feed"
+  },
+  {
+    "id": "36kr",
+    "name": "36氪",
+    "url": "https://36kr.com/feed"
+  },
+  {
+    "id": "ifanr",
+    "name": "爱范儿",
+    "url": "http://www.ifanr.com/feed"
+  },
+  {
+    "id": "geekpark",
+    "name": "极客公园",
+    "url": "http://www.geekpark.net/rss"
+  },
+  {
+    "id": "songshuhui",
+    "name": "科学松鼠会",
+    "url": "http://songshuhui.net/feed"
+  },
+  {
+    "id": "ruanyifeng_blog",
+    "name": "阮一峰的网络日志",
+    "url": "http://www.ruanyifeng.com/blog/atom.xml"
+  },
+  {
+    "id": "xinhuanet_finance",
+    "name": "新华网 财经新闻",
+    "url": "http://rss.xinhuanet.com/rss/fortune.xml"
+  },
+  {
+    "id": "netease_news",
+    "name": "网易新闻 综合",
+    "url": "http://rss.163.com/news.xml"
+  },
+  {
+    "id": "qq_news",
+    "name": "腾讯新闻 综合",
+    "url": "http://news.qq.com/rss/news_rss.xml"
+  }
+]
