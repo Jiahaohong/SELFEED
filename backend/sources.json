@@ -541,11 +541,91 @@
   },
   {
     "id": "web-govcn-zhengce",
-    "name": "网页爬取 | Gov Policy Page",
+    "name": "网页爬取 | 中国政府网政策",
     "url": "https://www.gov.cn/zhengce/",
     "channelName": "macro_policy_scraper",
     "channelParams": {
       "sourceId": "govcn-zhengce"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-stats-home",
+    "name": "网页爬取 | 国家统计局",
+    "url": "https://www.stats.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "stats-home"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-pbc-home",
+    "name": "网页爬取 | 中国人民银行",
+    "url": "http://www.pbc.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "pbc-home"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-mof-home",
+    "name": "网页爬取 | 财政部",
+    "url": "https://www.mof.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "mof-home"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-ndrc-home",
+    "name": "网页爬取 | 国家发展改革委",
+    "url": "https://www.ndrc.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "ndrc-home"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-npc-home",
+    "name": "网页爬取 | 全国人大",
+    "url": "http://www.npc.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "npc-home"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-court-home",
+    "name": "网页爬取 | 最高人民法院",
+    "url": "https://www.court.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "court-home"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-spp-home",
+    "name": "网页爬取 | 最高人民检察院",
+    "url": "https://www.spp.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "spp-home"
+    },
+    "enabled": true
+  },
+  {
+    "id": "web-ccdi-home",
+    "name": "网页爬取 | 中央纪委国家监委",
+    "url": "https://www.ccdi.gov.cn/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "ccdi-home"
     },
     "enabled": true
   }

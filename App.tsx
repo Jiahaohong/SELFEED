@@ -1505,24 +1505,6 @@ const App: React.FC = () => {
               </>
             ) : (
               <>
-                <div className="mt-4 flex items-center justify-between">
-                  <div className="text-xs text-gray-400">
-                    信息源列表
-                  </div>
-                  <button
-                    type="button"
-                    className="rounded-md border border-gray-200 px-2.5 py-1 text-xs text-gray-600 hover:bg-gray-50"
-                    onClick={refreshSourceStatuses}
-                    disabled={isSourceStatusLoading}
-                  >
-                    {isSourceStatusLoading ? '检测中...' : '重新检测'}
-                  </button>
-                </div>
-
-                {sourceStatusError ? (
-                  <div className="mt-3 text-xs text-red-600">{sourceStatusError}</div>
-                ) : null}
-
                 <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50/70 p-3">
                   <div className="text-xs font-medium text-gray-500">自动刷新</div>
                   <div className="mt-3 space-y-3">
@@ -1570,74 +1552,6 @@ const App: React.FC = () => {
                       </button>
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-3 max-h-[60vh] overflow-y-auto divide-y divide-gray-100">
-                  {isSourceStatusLoading && sourceStatuses.length === 0 ? (
-                    <div className="space-y-3 py-2">
-                      {Array.from({ length: 6 }).map((_, index) => (
-                        <div key={`source-skeleton-${index}`} className="flex items-center justify-between px-2">
-                          <div className="h-4 w-44 rounded bg-gray-200 animate-pulse" />
-                          <div className="h-3 w-20 rounded bg-gray-200 animate-pulse" />
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    sourceStatuses.map((source) => {
-                      const statusStyles = source.status === 'ok'
-                        ? 'bg-emerald-50 text-emerald-700'
-                        : source.status === 'disabled'
-                          ? 'bg-gray-100 text-gray-500'
-                          : source.status === 'checking'
-                            ? 'bg-sky-50 text-sky-700'
-                            : source.status === 'unknown'
-                              ? 'bg-amber-50 text-amber-700'
-                              : 'bg-red-50 text-red-600';
-                      const statusLabel = source.status === 'ok'
-                        ? '可访问'
-                        : source.status === 'disabled'
-                          ? '已禁用'
-                          : source.status === 'checking'
-                            ? '检测中'
-                            : source.status === 'unknown'
-                              ? '未检测'
-                              : '不可访问';
-                      return (
-                        <div key={source.id} className="py-3 px-2">
-                          <div className="flex items-center justify-between gap-3">
-                            <div className="min-w-0">
-                              <div className="text-sm text-gray-800 truncate">{source.name}</div>
-                              <div className="text-[11px] text-gray-400 break-all">{source.url}</div>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className={`flex-shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-medium ${statusStyles}`}>
-                                {statusLabel}
-                              </span>
-                              <button
-                                type="button"
-                                className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${
-                                  source.enabled ? 'bg-emerald-400' : 'bg-gray-200'
-                                } ${source.status === 'checking' ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                onClick={() => toggleSourceEnabled(source)}
-                                aria-pressed={source.enabled}
-                                title={source.enabled ? '停用信息源' : '启用信息源'}
-                                disabled={source.status === 'checking'}
-                              >
-                                <span
-                                  className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
-                                    source.enabled ? 'translate-x-4' : 'translate-x-1'
-                                  }`}
-                                />
-                              </button>
-                            </div>
-                          </div>
-                          {source.message ? (
-                            <div className="mt-1 text-[11px] text-gray-400 break-all">{source.message}</div>
-                          ) : null}
-                        </div>
-                      );
-                    })
-                  )}
                 </div>
               </>
             )}

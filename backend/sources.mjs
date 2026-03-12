@@ -112,24 +112,39 @@ const bootstrapDefaultSources = () => getAllChannelMetadata().flatMap((meta) => 
   }];
 });
 
-const migrateLegacyChannelSources = (sources) => {
+const getChannelSourceId = (source) => String(source?.channelParams?.sourceId || '').trim();
+
+const reconcileChannelSources = (sources) => {
   let next = [...sources];
   for (const meta of getAllChannelMetadata()) {
     const channelName = meta.name;
-    const hasGranular = next.some(
-      (source) => source.channelName === channelName && source?.channelParams?.sourceId
+    const hasManagedEntries = buildChannelSourceEntries(channelName, true).length > 0;
+    if (!hasManagedEntries) continue;
+    const existingForChannel = next.filter((source) => source.channelName === channelName);
+    const granularMap = new Map(
+      existingForChannel
+        .map((source) => [getChannelSourceId(source), source])
+        .filter(([sourceId]) => sourceId)
     );
-    if (hasGranular) continue;
-    const legacy = next.filter(
-      (source) => source.channelName === channelName && !source?.channelParams?.sourceId
-    );
-    if (legacy.length === 0) continue;
+    const hasGranular = granularMap.size > 0;
+    const legacy = existingForChannel.filter((source) => !getChannelSourceId(source));
     const baseEnabled = legacy.some((source) => source.enabled !== false);
-    const entries = buildChannelSourceEntries(channelName, baseEnabled);
-    if (entries.length === 0) continue;
+    const templateEntries = buildChannelSourceEntries(
+      channelName,
+      hasGranular ? true : baseEnabled
+    );
+    const merged = templateEntries.map((source) => {
+      const sourceId = getChannelSourceId(source);
+      const existing = sourceId ? granularMap.get(sourceId) : null;
+      if (!existing) return source;
+      return normalizeSource({
+        ...source,
+        enabled: existing.enabled !== false
+      });
+    });
     next = [
-      ...next.filter((source) => !(source.channelName === channelName && !source?.channelParams?.sourceId)),
-      ...entries
+      ...next.filter((source) => source.channelName !== channelName),
+      ...merged
     ];
   }
   return next;
@@ -144,7 +159,7 @@ let cachedSources = (() => {
     .map(normalizeSource)
     .filter(isValidSource);
   if (loaded.length > 0) {
-    const migrated = migrateLegacyChannelSources(loaded);
+    const migrated = reconcileChannelSources(loaded);
     if (JSON.stringify(migrated) !== JSON.stringify(loaded)) {
       persistSources(migrated);
     }
