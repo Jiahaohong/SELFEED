@@ -12,6 +12,8 @@ interface SidebarNotesProps {
   isRefreshing: boolean;
   canRefresh: boolean;
   stockQuote: StockQuote | null;
+  stockQuoteLoading: boolean;
+  showStockCard: boolean;
 }
 
 const SidebarNotes: React.FC<SidebarNotesProps> = ({
@@ -23,21 +25,24 @@ const SidebarNotes: React.FC<SidebarNotesProps> = ({
   onRefresh,
   isRefreshing,
   canRefresh,
-  stockQuote
+  stockQuote,
+  stockQuoteLoading,
+  showStockCard
 }) => {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
+    return new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
       minute: '2-digit'
     }).format(date);
   };
 
   const formatCurrency = (value: number, currency: string) => {
     try {
-      return new Intl.NumberFormat('en-US', {
+      return new Intl.NumberFormat('zh-CN', {
         style: 'currency',
         currency: currency || 'USD',
         maximumFractionDigits: 2
@@ -84,20 +89,20 @@ const SidebarNotes: React.FC<SidebarNotesProps> = ({
     );
   });
 
-  const hasContent = filteredArticles.length > 0 || Boolean(stockQuote);
+  const hasContent = filteredArticles.length > 0 || Boolean(stockQuote) || showStockCard;
 
   return (
-    <div className="flex flex-col h-full bg-white border-r border-gray-200 w-[300px] flex-shrink-0 z-10">
+    <div className="flex flex-col h-full bg-white border-r border-gray-200 w-full flex-shrink-0 z-10">
       <div className="h-14 flex items-center px-4 border-b border-gray-100 flex-shrink-0">
         <div className="flex items-center gap-2 w-full">
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <Newspaper size={14} />
-            News Summaries
+            新闻摘要
           </div>
           <div className="relative flex-1">
             <input
               type="text"
-              placeholder="Search news"
+              placeholder="搜索新闻"
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
               className="w-full bg-gray-100 text-gray-800 text-sm rounded-md px-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-note-yellow/50 transition-all placeholder-gray-400"
@@ -108,7 +113,7 @@ const SidebarNotes: React.FC<SidebarNotesProps> = ({
             onClick={onRefresh}
             disabled={!canRefresh || isRefreshing}
             className="h-8 w-8 flex items-center justify-center rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors disabled:text-gray-300 disabled:hover:text-gray-300 disabled:hover:bg-transparent"
-            title="Refresh"
+            title="刷新"
           >
             <RefreshCw size={14} className={isRefreshing ? 'animate-spin' : ''} />
           </button>
@@ -118,19 +123,20 @@ const SidebarNotes: React.FC<SidebarNotesProps> = ({
       <div className="flex-1 overflow-y-auto">
         {!hasContent ? (
           <div className="flex flex-col items-center justify-center h-40 text-gray-400">
-            <span className="text-sm">No summaries found</span>
+            <span className="text-sm">暂无新闻摘要</span>
           </div>
         ) : (
           <div className="p-3 space-y-2">
-            {stockQuote ? (
+            {showStockCard ? (
+              stockQuote && !stockQuoteLoading ? (
               <div className="rounded-xl border border-gray-200 bg-white px-3 py-2 shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="min-w-[78px]">
-                    <div className="text-[11px] uppercase tracking-wide text-gray-400">
-                      {stockQuote.symbol}
-                    </div>
                     <div className="text-sm font-semibold text-gray-900 truncate">
                       {stockQuote.name}
+                    </div>
+                    <div className="text-[11px] uppercase tracking-wide text-gray-400 mt-0.5">
+                      {stockQuote.symbol}
                     </div>
                   </div>
                   <div className="flex-1">
@@ -148,6 +154,23 @@ const SidebarNotes: React.FC<SidebarNotesProps> = ({
                   </div>
                 </div>
               </div>
+              ) : (
+                <div className="rounded-xl border border-gray-200 bg-white px-3 py-2 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="min-w-[78px] space-y-2">
+                      <div className="h-4 w-20 rounded bg-gray-200 animate-pulse" />
+                      <div className="h-3 w-12 rounded bg-gray-200 animate-pulse" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="h-8 w-full rounded bg-gray-200 animate-pulse" />
+                    </div>
+                    <div className="min-w-[90px] space-y-2">
+                      <div className="h-4 w-full rounded bg-gray-200 animate-pulse" />
+                      <div className="h-3 w-16 rounded bg-gray-200 animate-pulse ml-auto" />
+                    </div>
+                  </div>
+                </div>
+              )
             ) : null}
             {filteredArticles.map(item => (
               <div

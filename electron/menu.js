@@ -23,14 +23,14 @@ export const buildMenu = () => {
         ]
       : []),
     {
-      label: 'File',
+      label: '文件',
       submenu: [
         { role: 'close' },
         ...(isMac ? [] : [{ role: 'quit' }])
       ]
     },
     {
-      label: 'Edit',
+      label: '编辑',
       submenu: [
         { role: 'undo' },
         { role: 'redo' },
@@ -44,7 +44,7 @@ export const buildMenu = () => {
       ]
     },
     {
-      label: 'View',
+      label: '视图',
       submenu: [
         { role: 'reload' },
         { role: 'forceReload' },
@@ -58,7 +58,7 @@ export const buildMenu = () => {
       ]
     },
     {
-      label: 'Window',
+      label: '窗口',
       submenu: [
         { role: 'minimize' },
         { role: 'zoom' },
@@ -76,7 +76,7 @@ export const buildMenu = () => {
       role: 'help',
       submenu: [
         {
-          label: 'Learn More',
+          label: '了解更多',
           click: async () => {
             const { shell } = await import('electron');
             await shell.openExternal('https://www.electronjs.org');

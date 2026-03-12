@@ -29,3 +29,8 @@ release
 tmp
 backend/*.db
 backend/*.db*
+python/akshare_service/build
+python/akshare_service/dist
+python/akshare_service/*.spec
+electron/bin/akshare_service
+electron/bin/akshare_service.exe

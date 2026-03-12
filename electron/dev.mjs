@@ -5,25 +5,16 @@ import path from 'path';
 const PORT = 3000;
 const DEV_SERVER_URL = `http://localhost:${PORT}`;
 const BACKEND_PORT = 8787;
+const LOCALHOST = '127.0.0.1';
 
 const isWin = process.platform === 'win32';
 const binExt = isWin ? '.cmd' : '';
 const viteBin = path.join(process.cwd(), 'node_modules', '.bin', `vite${binExt}`);
 const electronBin = path.join(process.cwd(), 'node_modules', '.bin', `electron${binExt}`);
 
-const startBackend = () => {
-  return spawn(process.execPath, ['backend/server.mjs'], {
-    stdio: 'inherit',
-    env: {
-      ...process.env,
-      PORT: String(BACKEND_PORT)
-    }
-  });
-};
-
-const waitForPort = (port, retries = 120) => new Promise((resolve, reject) => {
+const waitForPort = (port, name, retries = 120) => new Promise((resolve, reject) => {
   const attempt = () => {
-    const socket = net.connect(port, '127.0.0.1');
+    const socket = net.connect(port, LOCALHOST);
     socket.once('connect', () => {
       socket.end();
       resolve();
@@ -31,7 +22,7 @@ const waitForPort = (port, retries = 120) => new Promise((resolve, reject) => {
     socket.once('error', () => {
       socket.destroy();
       if (retries <= 0) {
-        reject(new Error(`Vite dev server not ready on port ${port}`));
+        reject(new Error(`${name} not ready on port ${port}`));
         return;
       }
       setTimeout(() => {
@@ -43,22 +34,26 @@ const waitForPort = (port, retries = 120) => new Promise((resolve, reject) => {
   attempt();
 });
 
-const startVite = () => {
-  return spawn(viteBin, ['--host', '0.0.0.0', '--port', String(PORT)], {
-    stdio: 'inherit',
-    env: process.env
-  });
-};
+const startBackend = () => spawn(process.execPath, ['backend/server.mjs'], {
+  stdio: 'inherit',
+  env: {
+    ...process.env,
+    PORT: String(BACKEND_PORT)
+  }
+});
 
-const startElectron = () => {
-  return spawn(electronBin, ['.'], {
-    stdio: 'inherit',
-    env: {
-      ...process.env,
-      VITE_DEV_SERVER_URL: DEV_SERVER_URL
-    }
-  });
-};
+const startVite = () => spawn(viteBin, ['--host', '0.0.0.0', '--port', String(PORT)], {
+  stdio: 'inherit',
+  env: process.env
+});
+
+const startElectron = () => spawn(electronBin, ['.'], {
+  stdio: 'inherit',
+  env: {
+    ...process.env,
+    VITE_DEV_SERVER_URL: DEV_SERVER_URL
+  }
+});
 
 const terminateProcess = (proc) => {
   if (!proc || proc.killed) return;
@@ -71,7 +66,10 @@ const main = async () => {
 
   let electronProcess;
   try {
-    await waitForPort(PORT);
+    await Promise.all([
+      waitForPort(BACKEND_PORT, 'Backend service'),
+      waitForPort(PORT, 'Vite dev server')
+    ]);
     electronProcess = startElectron();
   } catch (error) {
     console.error(String(error));

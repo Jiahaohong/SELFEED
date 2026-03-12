@@ -1,67 +1,552 @@
 [
   {
-    "id": "people",
-    "name": "人民网 全部新闻",
-    "url": "http://www.people.com.cn/rss/ywkx.xml"
+    "id": "rss-mfa-lqbb",
+    "name": "RSS | 外交部领事播报",
+    "url": "https://cs.mfa.gov.cn/gyls/lsgz/lqbb/rss_57447.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "mfa-lqbb"
+    },
+    "enabled": true
   },
   {
-    "id": "chinanews",
-    "name": "中国新闻网 滚动新闻",
-    "url": "https://www.chinanews.com.cn/rss/scroll-news.xml"
+    "id": "rss-mfa-fwxx",
+    "name": "RSS | 外交部领事服务信息",
+    "url": "https://cs.mfa.gov.cn/gyls/lsgz/fwxx/rss_57447.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "mfa-fwxx"
+    },
+    "enabled": true
   },
   {
-    "id": "sina_tech",
-    "name": "新浪科技",
-    "url": "https://rss.sina.com.cn/tech/index.xml"
+    "id": "rss-mfa-lsyj",
+    "name": "RSS | 外交部领事预警",
+    "url": "https://cs.mfa.gov.cn/gyls/lsgz/lsyj/rss_57447.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "mfa-lsyj"
+    },
+    "enabled": true
   },
   {
-    "id": "xinhuanet_science",
-    "name": "新华网 科技新闻",
-    "url": "http://rss.xinhuanet.com/rss/science.xml"
+    "id": "rss-stats-zxfb",
+    "name": "RSS | 国家统计局最新发布",
+    "url": "https://www.stats.gov.cn/sj/zxfb/rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "stats-zxfb"
+    },
+    "enabled": false
   },
   {
-    "id": "sspai",
-    "name": "少数派",
-    "url": "https://sspai.com/feed"
+    "id": "rss-stats-sjjd",
+    "name": "RSS | 国家统计局数据解读",
+    "url": "https://www.stats.gov.cn/sj/sjjd/rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "stats-sjjd"
+    },
+    "enabled": false
   },
   {
-    "id": "36kr",
-    "name": "36氪",
-    "url": "https://36kr.com/feed"
+    "id": "rss-stats-pressrelease-en",
+    "name": "RSS | NBS Press Release",
+    "url": "https://www.stats.gov.cn/english/PressRelease/rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "stats-pressrelease-en"
+    },
+    "enabled": false
   },
   {
-    "id": "ifanr",
-    "name": "爱范儿",
-    "url": "http://www.ifanr.com/feed"
+    "id": "rss-stats-pressrelease-en-http",
+    "name": "RSS | NBS Press Release",
+    "url": "http://www.stats.gov.cn/english/PressRelease/rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "stats-pressrelease-en-http"
+    },
+    "enabled": false
   },
   {
-    "id": "geekpark",
-    "name": "极客公园",
-    "url": "http://www.geekpark.net/rss"
+    "id": "rss-chinaorg-1195896",
+    "name": "RSS | China.org.cn Finance",
+    "url": "http://www.china.org.cn/rss/1195896.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinaorg-1195896"
+    },
+    "enabled": false
   },
   {
-    "id": "songshuhui",
-    "name": "科学松鼠会",
-    "url": "http://songshuhui.net/feed"
+    "id": "rss-chinadaily-business",
+    "name": "RSS | China Daily Business",
+    "url": "http://www.chinadaily.com.cn/rss/business_rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinadaily-business"
+    },
+    "enabled": false
   },
   {
-    "id": "ruanyifeng_blog",
-    "name": "阮一峰的网络日志",
-    "url": "http://www.ruanyifeng.com/blog/atom.xml"
+    "id": "rss-chinanews-finance",
+    "name": "RSS | 中国新闻网财经",
+    "url": "http://www.chinanews.com/rss/finance.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinanews-finance"
+    },
+    "enabled": true
   },
   {
-    "id": "xinhuanet_finance",
-    "name": "新华网 财经新闻",
-    "url": "http://rss.xinhuanet.com/rss/fortune.xml"
+    "id": "rss-gmw-finance",
+    "name": "RSS | 光明网财经",
+    "url": "http://www.gmw.cn/rss/finance.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "gmw-finance"
+    },
+    "enabled": false
   },
   {
-    "id": "netease_news",
-    "name": "网易新闻 综合",
-    "url": "http://rss.163.com/news.xml"
+    "id": "rss-cnstock-news",
+    "name": "RSS | 上海证券报",
+    "url": "http://www.cnstock.com/rss/rss_news.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "cnstock-news"
+    },
+    "enabled": false
   },
   {
-    "id": "qq_news",
-    "name": "腾讯新闻 综合",
-    "url": "http://news.qq.com/rss/news_rss.xml"
+    "id": "rss-stcn",
+    "name": "RSS | 证券时报",
+    "url": "http://www.stcn.com/rss/rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "stcn"
+    },
+    "enabled": true
+  },
+  {
+    "id": "rss-sina-finance",
+    "name": "RSS | 新浪财经",
+    "url": "https://rss.sina.com.cn/finance.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "sina-finance"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-sina-stock",
+    "name": "RSS | 新浪股票",
+    "url": "https://rss.sina.com.cn/stock.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "sina-stock"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-sina-bank",
+    "name": "RSS | 新浪银行",
+    "url": "https://rss.sina.com.cn/bank.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "sina-bank"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-eastmoney-news",
+    "name": "RSS | RSSHub Eastmoney News",
+    "url": "https://rsshub.app/eastmoney/news",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-eastmoney-news"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-eastmoney-report",
+    "name": "RSS | RSSHub Eastmoney Report",
+    "url": "https://rsshub.app/eastmoney/report",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-eastmoney-report"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-tencent-finance",
+    "name": "RSS | RSSHub Tencent Finance",
+    "url": "https://rsshub.app/tencent/finance",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-tencent-finance"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-wallstreetcn-news",
+    "name": "RSS | RSSHub WallstreetCN News",
+    "url": "https://rsshub.app/wallstreetcn/news",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-wallstreetcn-news"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-wallstreetcn-live",
+    "name": "RSS | RSSHub WallstreetCN Live",
+    "url": "https://rsshub.app/wallstreetcn/live",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-wallstreetcn-live"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-xinwengao-business",
+    "name": "RSS | 新闻稿网商业频道",
+    "url": "https://www.xinwengao.com/rss/business.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "xinwengao-business"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-xinwengao-finance",
+    "name": "RSS | 新闻稿网财经频道",
+    "url": "https://www.xinwengao.com/rss/finance.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "xinwengao-finance"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-xinwengao-energy",
+    "name": "RSS | 新闻稿网能源频道",
+    "url": "https://www.xinwengao.com/rss/energy.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "xinwengao-energy"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-ftchinese-news",
+    "name": "RSS | FT中文网新闻",
+    "url": "https://www.ftchinese.com/rss/news",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "ftchinese-news"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-ftchinese-finance",
+    "name": "RSS | FT中文网财经",
+    "url": "https://www.ftchinese.com/rss/finance",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "ftchinese-finance"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-chinaorg-1201719",
+    "name": "RSS | China.org.cn Government",
+    "url": "http://www.china.org.cn/rss/1201719.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinaorg-1201719"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-chinaorg-1185842",
+    "name": "RSS | China.org.cn China",
+    "url": "http://www.china.org.cn/rss/1185842.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinaorg-1185842"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-chinaorg-en-201724",
+    "name": "RSS | China.org.cn English",
+    "url": "http://www.china.org.cn/english/rss/201724.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinaorg-en-201724"
+    },
+    "enabled": true
+  },
+  {
+    "id": "rss-xinwengao-government",
+    "name": "RSS | 新闻稿网政府频道",
+    "url": "https://www.xinwengao.com/rss/government.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "xinwengao-government"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-legaldaily-fzrb",
+    "name": "RSS | 法治日报",
+    "url": "http://www.legaldaily.com.cn/rss/fzrb.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "legaldaily-fzrb"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-chinanews-legal",
+    "name": "RSS | 中国新闻网法治",
+    "url": "https://www.chinanews.com.cn/rss/society.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinanews-legal"
+    },
+    "enabled": true
+  },
+  {
+    "id": "rss-gmw-legal",
+    "name": "RSS | 光明网法治",
+    "url": "http://www.gmw.cn/rss/legal.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "gmw-legal"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-thepaper-law",
+    "name": "RSS | RSSHub 澎湃法治",
+    "url": "https://rsshub.app/thepaper/channel/25951",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-thepaper-law"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-sz-gzw-rss",
+    "name": "RSS | 深圳国资委",
+    "url": "https://gzw.sz.gov.cn/RSS/",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "sz-gzw-rss"
+    },
+    "enabled": true
+  },
+  {
+    "id": "rss-sz-jtys-rss",
+    "name": "RSS | 深圳交通运输局",
+    "url": "https://jtys.sz.gov.cn/fzlm/rss/",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "sz-jtys-rss"
+    },
+    "enabled": true
+  },
+  {
+    "id": "rss-anshunjkq-rss",
+    "name": "RSS | 安顺经开区",
+    "url": "https://www.anshunjkq.gov.cn/syqt/rssdy/",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "anshunjkq-rss"
+    },
+    "enabled": true
+  },
+  {
+    "id": "rss-govcn-main-rss",
+    "name": "RSS | 中国政府网",
+    "url": "http://www.gov.cn/rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "govcn-main-rss"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-chinadaily-china",
+    "name": "RSS | China Daily China",
+    "url": "http://www.chinadaily.com.cn/rss/china_rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinadaily-china"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-chinanews-health",
+    "name": "RSS | 中国新闻网健康",
+    "url": "https://www.chinanews.com.cn/rss/health.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinanews-health"
+    },
+    "enabled": true
+  },
+  {
+    "id": "rss-gmw-health",
+    "name": "RSS | 光明网健康",
+    "url": "http://www.gmw.cn/rss/health.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "gmw-health"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-chinadaily-life",
+    "name": "RSS | China Daily Life",
+    "url": "http://www.chinadaily.com.cn/rss/life_rss.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "chinadaily-life"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-xinwengao-health",
+    "name": "RSS | 新闻稿网健康频道",
+    "url": "https://www.xinwengao.com/rss/health.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "xinwengao-health"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-xinwengao-chemical",
+    "name": "RSS | 新闻稿网化工医药频道",
+    "url": "https://www.xinwengao.com/rss/chemical.xml",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "xinwengao-chemical"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-thepaper-health",
+    "name": "RSS | RSSHub 澎湃健康",
+    "url": "https://rsshub.app/thepaper/channel/25950",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-thepaper-health"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-36kr-health",
+    "name": "RSS | RSSHub 36Kr Health",
+    "url": "https://rsshub.app/36kr/information/health",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-36kr-health"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-rsshub-36kr-biotech",
+    "name": "RSS | RSSHub 36Kr Biotech",
+    "url": "https://rsshub.app/36kr/information/biotech",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "rsshub-36kr-biotech"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-ftchinese-health",
+    "name": "RSS | FT中文网健康",
+    "url": "https://www.ftchinese.com/rss/health",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "ftchinese-health"
+    },
+    "enabled": false
+  },
+  {
+    "id": "rss-ftchinese-tech",
+    "name": "RSS | FT中文网科技",
+    "url": "https://www.ftchinese.com/rss/tech",
+    "channelName": "news_rss_channel",
+    "channelParams": {
+      "sourceId": "ftchinese-tech"
+    },
+    "enabled": false
+  },
+  {
+    "id": "stock-tencent",
+    "name": "股票API | Tencent Quote API",
+    "url": "https://qt.gtimg.cn/q=",
+    "channelName": "stock_price_api",
+    "channelParams": {
+      "sourceId": "tencent"
+    },
+    "enabled": true
+  },
+  {
+    "id": "stock-sina",
+    "name": "股票API | Sina Quote API",
+    "url": "https://hq.sinajs.cn/list=",
+    "channelName": "stock_price_api",
+    "channelParams": {
+      "sourceId": "sina"
+    },
+    "enabled": true
+  },
+  {
+    "id": "stock-netease",
+    "name": "股票API | Netease API",
+    "url": "https://api.money.126.net/data/feed/",
+    "channelName": "stock_price_api",
+    "channelParams": {
+      "sourceId": "netease"
+    },
+    "enabled": false
+  },
+  {
+    "id": "stock-eastmoney",
+    "name": "股票API | Eastmoney API",
+    "url": "https://push2.eastmoney.com/api/qt/stock/get",
+    "channelName": "stock_price_api",
+    "channelParams": {
+      "sourceId": "eastmoney"
+    },
+    "enabled": true
+  },
+  {
+    "id": "stock-yahoo",
+    "name": "股票API | Yahoo Finance API",
+    "url": "https://query1.finance.yahoo.com/v7/finance/quote?symbols=",
+    "channelName": "stock_price_api",
+    "channelParams": {
+      "sourceId": "yahoo"
+    },
+    "enabled": false
+  },
+  {
+    "id": "web-govcn-zhengce",
+    "name": "网页爬取 | Gov Policy Page",
+    "url": "https://www.gov.cn/zhengce/",
+    "channelName": "macro_policy_scraper",
+    "channelParams": {
+      "sourceId": "govcn-zhengce"
+    },
+    "enabled": true
   }
 ]

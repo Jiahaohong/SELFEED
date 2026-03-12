@@ -49,6 +49,51 @@ export interface StockQuote {
   change: number;
   changePercent: number;
   currency: string;
+  source: string;
   series: number[];
+  summary?: string;
+  url?: string;
+  rawTitle?: string;
   updatedAt: string;
+}
+
+export interface SourceStatus {
+  id: string;
+  name: string;
+  url: string;
+  channelName?: string;
+  enabled: boolean;
+  status: 'ok' | 'error' | 'disabled' | 'unknown' | 'checking';
+  message?: string;
+  checkedUrl?: string;
+  checkedAt: string;
+}
+
+export interface SourceConfig {
+  id: string;
+  name: string;
+  url: string;
+  channelName?: string;
+  channelParams?: Record<string, string>;
+  enabled?: boolean;
+}
+
+export interface ChannelMetadata {
+  name: string;
+  description: string;
+  input_schema?: Record<string, string>;
+}
+
+export interface SourceDemoItem {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  url?: string;
+  source?: string;
+  publishTime?: string;
+}
+
+export interface SourceDemoResponse {
+  results: SourceDemoItem[];
+  errors: string[];
 }

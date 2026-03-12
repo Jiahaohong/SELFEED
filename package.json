@@ -10,10 +10,11 @@
     "dev:web": "vite",
     "backend:dev": "node backend/server.mjs",
     "build": "vite build",
+    "build:desktop": "ELECTRON=true vite build",
     "preview": "vite preview",
     "electron:dev": "VITE_DEV_SERVER_URL=http://localhost:3000 electron .",
-    "electron:build": "ELECTRON=true vite build",
-    "electron:preview": "npm run electron:build && electron ."
+    "electron:build": "npm run build:desktop",
+    "electron:preview": "ELECTRON=true vite build && electron ."
   },
   "dependencies": {
     "better-sqlite3": "^11.7.0",
@@ -24,7 +25,8 @@
     "lucide-react": "^0.563.0",
     "rss-parser": "^3.13.0",
     "uuid": "^13.0.0",
-    "@google/genai": "^1.38.0"
+    "@google/genai": "^1.38.0",
+    "yahoo-finance2": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

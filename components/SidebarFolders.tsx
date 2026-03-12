@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ChevronRight, Folder as FolderIcon, Pencil, Plus, Tag, TrendingUp, X } from 'lucide-react';
+import { ChevronRight, Folder as FolderIcon, Pencil, Plus, Settings, Tag, TrendingUp, X } from 'lucide-react';
 import { Folder, Keyword } from '../types';
 
 interface SidebarFoldersProps {
@@ -17,8 +17,10 @@ interface SidebarFoldersProps {
   onRenameFolder: (id: string, name: string) => void;
   onDeleteFolder: (id: string) => void;
   onRenameKeyword: (id: string, text: string) => void;
+  onEditStockKeyword: (keyword: Keyword) => void;
   onDeleteKeyword: (id: string) => void;
   onMoveKeyword: (keywordId: string, folderId: string | null) => void;
+  onOpenSettings: () => void;
 }
 
 type ContextMenuState =
@@ -40,8 +42,10 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
   onRenameFolder,
   onDeleteFolder,
   onRenameKeyword,
+  onEditStockKeyword,
   onDeleteKeyword,
-  onMoveKeyword
+  onMoveKeyword,
+  onOpenSettings
 }) => {
   const [expandedFolderIds, setExpandedFolderIds] = useState<Set<string>>(new Set());
   const [contextMenu, setContextMenu] = useState<ContextMenuState | null>(null);
@@ -115,6 +119,15 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
     setEditing({ type: 'keyword', id: keyword.id });
     setEditingValue(keyword.text);
     setContextMenu(null);
+  };
+
+  const beginKeywordEdit = (keyword: Keyword) => {
+    if (keyword.kind === 'stock') {
+      onEditStockKeyword(keyword);
+      setContextMenu(null);
+      return;
+    }
+    beginRenameKeyword(keyword);
   };
 
   const commitRename = () => {
@@ -215,7 +228,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
             <button
               type="button"
               className="p-1 text-gray-400 hover:text-gray-600"
-              title="Rename"
+              title="重命名"
               draggable={false}
               onMouseDown={(event) => {
                 event.preventDefault();
@@ -223,7 +236,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
               }}
               onClick={(event) => {
                 event.stopPropagation();
-                beginRenameKeyword(keyword);
+                beginKeywordEdit(keyword);
               }}
             >
               <Pencil size={14} />
@@ -231,7 +244,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
             <button
               type="button"
               className="p-1 text-gray-400 hover:text-red-500"
-              title="Delete"
+              title="删除"
               draggable={false}
               onMouseDown={(event) => {
                 event.preventDefault();
@@ -292,7 +305,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
                 event.stopPropagation();
                 toggleFolder(folder.id);
               }}
-              aria-label={isExpanded ? 'Collapse folder' : 'Expand folder'}
+              aria-label={isExpanded ? '收起文件夹' : '展开文件夹'}
             >
               <ChevronRight
                 size={12}
@@ -332,7 +345,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
               <button
                 type="button"
                 className="p-1 text-gray-400 hover:text-gray-600"
-                title="Rename"
+                title="重命名"
                 draggable={false}
                 onMouseDown={(event) => {
                   event.preventDefault();
@@ -348,7 +361,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
               <button
                 type="button"
                 className="p-1 text-gray-400 hover:text-red-500"
-                title="Delete"
+                title="删除"
                 draggable={false}
                 onMouseDown={(event) => {
                   event.preventDefault();
@@ -380,16 +393,24 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
   );
 
   return (
-    <div className="flex flex-col h-full bg-gray-50/90 backdrop-blur-xl border-r border-gray-200 w-[260px] flex-shrink-0 transition-all duration-300 relative z-30">
-      <div className="h-12 flex items-center px-4 font-medium text-gray-500 text-sm select-none">
-        Keywords
+    <div className="flex flex-col h-full bg-gray-50/90 backdrop-blur-xl border-r border-gray-200 w-full flex-shrink-0 transition-all duration-300 relative z-30">
+      <div className="h-12 flex items-center justify-between px-4 font-medium text-gray-500 text-sm select-none">
+        <span>关键词</span>
+        <button
+          type="button"
+          className="h-7 w-7 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 flex items-center justify-center"
+          title="设置"
+          onClick={onOpenSettings}
+        >
+          <Settings size={14} />
+        </button>
       </div>
 
       <div className="flex-1 overflow-y-auto px-2 space-y-[1px] py-2">
         {folders.map(folder => renderFolderRow(folder))}
         {allKeywords.length > 0 ? (
           <div className="pt-2">
-            <div className="px-3 text-[11px] text-gray-400 uppercase tracking-wide">All Keywords</div>
+            <div className="px-3 text-[11px] text-gray-400 uppercase tracking-wide">全部关键词</div>
             <div className="space-y-[1px] mt-1">
               {allKeywords.map(keyword => renderKeywordRow(keyword, 0, 'global'))}
             </div>
@@ -405,7 +426,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
           <div className="bg-gray-200 rounded-full p-0.5">
             <Plus size={14} />
           </div>
-          New Folder
+          新建文件夹
         </button>
         <button
           onClick={() => onAddStockKeyword(null)}
@@ -414,7 +435,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
           <div className="bg-gray-200 rounded-full p-0.5">
             <TrendingUp size={14} />
           </div>
-          New Stock Keyword
+          新建股票关键词
         </button>
         <button
           onClick={() => onAddKeyword(null)}
@@ -423,7 +444,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
           <div className="bg-gray-200 rounded-full p-0.5">
             <Plus size={14} />
           </div>
-          New Keyword
+          新建关键词
         </button>
       </div>
 
@@ -474,7 +495,7 @@ const SidebarFolders: React.FC<SidebarFoldersProps> = ({
                 className="w-full text-left px-2.5 py-2 rounded-lg hover:bg-gray-100/80 transition-colors"
                 onClick={() => {
                   const keyword = keywords.find(item => item.id === contextMenu.id);
-                  if (keyword) beginRenameKeyword(keyword);
+                  if (keyword) beginKeywordEdit(keyword);
                 }}
               >
                 重命名关键词

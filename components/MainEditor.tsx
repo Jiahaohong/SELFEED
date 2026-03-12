@@ -8,25 +8,33 @@ interface MainEditorProps {
 }
 
 const MainEditor: React.FC<MainEditorProps> = ({ article, onMarkIrrelevant }) => {
+  const isPdfUrl = (value: string) => {
+    const normalized = String(value || '').trim().toLowerCase();
+    return normalized.endsWith('.pdf') || normalized.includes('.pdf?');
+  };
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
+    return new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
       minute: '2-digit'
     }).format(date);
   };
+
+  const pdfUrl = article && isPdfUrl(article.url) ? article.url : '';
 
   if (!article) {
     return (
       <div className="flex-1 flex flex-col h-full bg-white">
         <div className="h-14 flex items-center gap-2 px-6 border-b border-gray-100 text-sm text-gray-500">
           <Newspaper size={16} />
-          News Detail
+          新闻详情
         </div>
         <div className="flex-1 flex items-center justify-center text-sm text-gray-400">
-          Select a news summary to view details
+          请选择一条新闻摘要查看详情
         </div>
       </div>
     );
@@ -37,7 +45,7 @@ const MainEditor: React.FC<MainEditorProps> = ({ article, onMarkIrrelevant }) =>
       <div className="h-14 flex items-center justify-between px-6 border-b border-gray-100 text-sm text-gray-500">
         <div className="flex items-center gap-2">
           <Newspaper size={16} />
-          News Detail
+          新闻详情
         </div>
         <div className="flex items-center gap-2">
           <a
@@ -67,11 +75,23 @@ const MainEditor: React.FC<MainEditorProps> = ({ article, onMarkIrrelevant }) =>
             <span className="text-gray-300">•</span>
             <span>{article.source}</span>
             <span className="text-gray-300">•</span>
-            <span>Score {(article.relevanceScore ?? 0).toFixed(2)}</span>
+            <span>相关度 {(article.relevanceScore ?? 0).toFixed(2)}</span>
           </div>
           <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
             {article.content}
           </div>
+          {pdfUrl ? (
+            <div className="mt-8">
+              <div className="mb-3 text-sm font-medium text-gray-900">PDF 预览</div>
+              <div className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
+                <iframe
+                  src={pdfUrl}
+                  title={article.title}
+                  className="h-[720px] w-full bg-white"
+                />
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
